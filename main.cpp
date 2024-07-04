@@ -1,34 +1,39 @@
 #include <iostream>
 
-class 親クラス {
+
+class Animal {
 public:
-    virtual void Voice() { 
-        std::cout << "あにまる" << std::endl;
+    virtual void makeSound() {
+        std::cout << "Animal sound" << std::endl;
     }
 };
 
-class 子供A : public 親クラス {
+
+class Dog : public Animal {
 public:
-    void Voice() override {
-        std::cout << "子供Aっす" << std::endl;
+    void makeSound() override {
+        std::cout << "Woof!" << std::endl;
     }
 };
 
-class 子供B : public 親クラス {
+class Cat : public Animal {
 public:
-    void Voice() override {
-        std::cout << "子供Bっす" << std::endl;
+    void makeSound() override {
+        std::cout << "Meow!" << std::endl;
     }
 };
 
 int main() {
-    親クラス* animal[2] = { new 子供A, new 子供B };
+    
+    Animal* animals[2] = { new Dog(), new Cat() };
 
-    animal[0]->Voice();
-    animal[1]->Voice();
+    
+    animals[0]->makeSound();
+    animals[1]->makeSound();
 
-    delete animal[0];
-    delete animal[1];
+ 
+    delete animals[0];
+    delete animals[1];
 
     return 0;
 }
